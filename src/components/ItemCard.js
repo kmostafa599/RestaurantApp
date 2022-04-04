@@ -10,13 +10,13 @@ import Typography from '@mui/material/Typography';
 // import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 // import SkipNextIcon from '@mui/icons-material/SkipNext';
 import seafood from '../icons/Seafood.png'
-const ItemCard = () => {
+const ItemCard = ({counter,setCounter}) => {
     const theme = useTheme();
 
     return (
         <div>
-            <Card sx={{ display: 'flex', boxShadow:"none" }}>
-            <CardMedia
+            <Card sx={{ display: 'flex', boxShadow: "none" }}>
+                <CardMedia
                     component="img"
                     sx={{ width: 151 }}
                     image={seafood}
@@ -34,15 +34,16 @@ const ItemCard = () => {
                     <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
                         <IconButton aria-label="previous">
                             {theme.direction === 'rtl' ? '+' : '-'}
+                            {} 
                         </IconButton>
                         <IconButton aria-label="play/pause">
-                            1          </IconButton>
+                            {}          </IconButton>
                         <IconButton aria-label="next">
                             {theme.direction === 'rtl' ? '-' : '+'}
                         </IconButton>
                     </Box>
                 </Box>
-                
+
             </Card>
         </div>
     )

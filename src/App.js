@@ -22,7 +22,6 @@ import ItemCard from './components/ItemCard';
 function App() {
   const [counter,setCounter] = useState()
   
-  const classes = useStyles() 
   
   
   return (

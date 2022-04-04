@@ -77,7 +77,7 @@ const TabsList = styled(TabsListUnstyled)`
         alignItems:"center",
     },
 })
-const Menu = () => {
+const Menu = ({counter,setCounter}) => {
     const classes = useStyles()
     return (
         <div className={classes.menu}>
@@ -87,7 +87,7 @@ const Menu = () => {
                     <Tab>Two</Tab>
                     <Tab>Three</Tab>
                 </TabsList>
-                <TabPanel value={0}><Products/></TabPanel>
+                <TabPanel value={0}><Products counter={counter} setCounter={setCounter}/></TabPanel>
                 <TabPanel value={1}><Products/></TabPanel>
                 <TabPanel value={2}><Products/></TabPanel>
             </TabsUnstyled>
