@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import AppBar from '@mui/material/AppBar';
 import { Badge, Button, Toolbar, Typography } from '@mui/material';
 import { makeStyles } from '@material-ui/core'
-import DeliveryIcon from '../icons/fast-delivery.png'
+import DeliveryIcon from '../../icons/fast-delivery.png'
 import MiniCart from './MiniCart';
-import Logo from '../icons/Logo.png'
+import Logo from '../../icons/Logo.png'
 
 const useStyles = makeStyles({
     header: {

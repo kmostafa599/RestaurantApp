@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core'
-import { Button, Grid, Typography } from '@mui/material'
-import pizza from '../icons/pizza.png'
+import {  Grid, Typography } from '@mui/material'
+import pizza from '../../icons/pizza.png'
 
 //sx={{ display: { xl: 'none', xs: 'block' } }}
 const useStyles = makeStyles({

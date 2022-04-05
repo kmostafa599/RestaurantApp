@@ -1,6 +1,6 @@
 import { Divider, Grid, Typography, TextField } from '@mui/material'
 import React from 'react'
-import ItemCard from './ItemCard'
+import ItemCard from '../Homepage/ItemCard'
 import { makeStyles, Button } from '@material-ui/core'
 
 const useStyles = makeStyles({
