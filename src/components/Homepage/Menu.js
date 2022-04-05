@@ -77,10 +77,11 @@ const TabsList = styled(TabsListUnstyled)`
         alignItems:"center",
     },
 })
-const Menu = () => {
+const Menu = ({data}) => {
   const [counter,setCounter] = useState()
 
     const classes = useStyles()
+    console.log(data)
     return (
         //sx={{ display: { xl: 'none', xs: 'block' } }}
         <div className={classes.menu}>
@@ -90,7 +91,7 @@ const Menu = () => {
                     <Tab>Two</Tab>
                     <Tab>Three</Tab>
                 </TabsList>
-                <TabPanel value={0}><Products counter={counter} setCounter={setCounter}/></TabPanel>
+                <TabPanel value={0}><Products data={data}counter={counter} setCounter={setCounter}/></TabPanel>
                 <TabPanel value={1}><Products/></TabPanel>
                 <TabPanel value={2}><Products/></TabPanel>
             </TabsUnstyled>

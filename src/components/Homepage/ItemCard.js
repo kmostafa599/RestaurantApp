@@ -11,8 +11,9 @@ import Typography from '@mui/material/Typography';
 // import SkipNextIcon from '@mui/icons-material/SkipNext';
 import seafood from '../../icons/Seafood.png'
 
-const ItemCard = ({counter,setCounter}) => {
+const ItemCard = ({ counter, setCounter, item }) => {
     const theme = useTheme();
+    console.log({item})
 
     return (
         <div>
@@ -22,24 +23,27 @@ const ItemCard = ({counter,setCounter}) => {
                     sx={{ width: 151 }}
                     image={seafood}
                     alt="Live from space album cover"
-                    style={{width:"5rem",height:"5rem"}}
+                    style={{ width: "5rem", height: "5rem" }}
                 />
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <CardContent sx={{ flex: '1 0 auto' }}>
                         <Typography component="div" variant="h5">
-                            Seafood
+                            {item.name}
                         </Typography>
-                        <Typography variant="subtitle1" color="text.secondary" component="div">
-                            Shrimp,
-                        </Typography>
+                        {item.contents(content => (
+                            <Typography variant="subtitle1" color="text.secondary" component="div">
+                                {content}
+                            </Typography>
+                        ))}
+
                     </CardContent>
                     <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
                         <IconButton aria-label="previous">
                             {theme.direction === 'rtl' ? '+' : '-'}
-                            {} 
+                            { }
                         </IconButton>
                         <IconButton aria-label="play/pause">
-                            {}          </IconButton>
+                            { }          </IconButton>
                         <IconButton aria-label="next">
                             {theme.direction === 'rtl' ? '-' : '+'}
                         </IconButton>

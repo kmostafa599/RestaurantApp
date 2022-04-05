@@ -22,12 +22,13 @@ const useStyles = makeStyles(theme => ({
     },
 
 }))
-const Products = ({ counter, setCounter }) => {
+const Products = ({ counter, setCounter, data }) => {
     const [open, setOpen] = useState(false);
     const classes = useStyles(open)
+    console.log(data)
     return (
-        <div className={classes.accordion} sx={{display:{ xs: "block", xl: "none"} }}>
-            <Accordion TransitionProps={{ timeout: 750 }} elevation={0} className="m-2" sx={{ border: "none", borderRadius: 10, margin: "5px", }}>
+        <div className={classes.accordion} sx={{ display: { xs: "block", xl: "none" } }}>
+            {/* <Accordion TransitionProps={{ timeout: 750 }} elevation={0} className="m-2" sx={{ border: "none", borderRadius: 10, margin: "5px", }}>
                 <AccordionSummary
                     onClick={() => setOpen(!open)}
                     expandIcon={<ExpandMoreIcon />}
@@ -41,21 +42,22 @@ const Products = ({ counter, setCounter }) => {
                 </AccordionSummary>
 
 
-                <AccordionDetails >
+                <AccordionDetails > */}
                     {/* <Typography  >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
         malesuada lacus ex, sit amet blandit leo lobortis eget.
       </Typography> */}
-                    <Grid container spacing={2} style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }} >
+                    {/* <Grid container spacing={2} style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }} >
                         <Grid item >
 
                         </Grid>
 
-                        <Grid style={{ width: "100%" }} item >
+                        <Grid style={{ width: "100%" }} item > */}
                             {/* {product.length? product.map((data,index) => (
                 <ItemCard itemName={data.name} itemPrice={data.price} itemImage={data.photo}/>)
                   ):<h1>No products available</h1>} */}
-                            <ItemCard />
+
+                            {/* <ItemCard />
                         </Grid>
 
                     </Grid>
@@ -63,95 +65,25 @@ const Products = ({ counter, setCounter }) => {
 
                 </AccordionDetails>
 
-            </Accordion>
+            </Accordion> */}
 
-            <Grid container spacing={2} sx={{display:{xl:'none',xs:'block'}}}>
+            <Grid container spacing={2} sx={{ display: { xl: 'none', xs: 'block' } }}>
                 <Grow in={true}><Grid item xs={4}><ItemCard setCounter={setCounter} counter={counter} /></Grid></Grow>
                 {/* Conditionally applies the timeout prop to change the entry speed. */}
-                <Grow
+                {/* <Grow
                     in={true}
                     style={{ transformOrigin: '0 0 0' }}
                     {...(true ? { timeout: 1000 } : {})}
-                >
-                    <Grid item xs={4}><ItemCard setCounter={setCounter} counter={counter} /></Grid>
-                </Grow>
-                <Grow
-                    in={true}
-                    style={{ transformOrigin: '0 0 0' }}
-                    {...(true ? { timeout: timeout + 100 } : {})}
-                >
-                    <Grid item xs={4}><ItemCard setCounter={setCounter} counter={counter} /></Grid>
-                </Grow>
-                <Grow
-                    in={true}
-                    style={{ transformOrigin: '0 0 0' }}
-                    {...(true ? { timeout: timeout + 100 } : {})}
-                >
-                    <Grid item xs={4}><ItemCard setCounter={setCounter} counter={counter} /></Grid>
-                </Grow>
-                <Grow
-                    in={true}
-                    style={{ transformOrigin: '0 0 0' }}
-                    {...(true ? { timeout: timeout + 100 } : {})}
-                >
-                    <Grid item xs={4}><ItemCard setCounter={setCounter} counter={counter} /></Grid>
-                </Grow>
-                <Grow
-                    in={true}
-                    style={{ transformOrigin: '0 0 0' }}
-                    {...(true ? { timeout: timeout + 100 } : {})}
-                >
-                    <Grid item xs={4}><ItemCard setCounter={setCounter} counter={counter} /></Grid>
-                </Grow>
-                <Grow
-                    in={true}
-                    style={{ transformOrigin: '0 0 0' }}
-                    {...(true ? { timeout: timeout + 100 } : {})}
-                >
-                    <Grid item xs={4}><ItemCard setCounter={setCounter} counter={counter} /></Grid>
-                </Grow>
-                <Grow
-                    in={true}
-                    style={{ transformOrigin: '0 0 0' }}
-                    {...(true ? { timeout: timeout + 100 } : {})}
-                >
-                    <Grid item xs={4}><ItemCard setCounter={setCounter} counter={counter} /></Grid>
-                </Grow>
-                <Grow
-                    in={true}
-                    style={{ transformOrigin: '0 0 0' }}
-                    {...(true ? { timeout: timeout + 100 } : {})}
-                >
-                    <Grid item xs={4}><ItemCard setCounter={setCounter} counter={counter} /></Grid>
-                </Grow>
-                <Grow
-                    in={true}
-                    style={{ transformOrigin: '0 0 0' }}
-                    {...(true ? { timeout: timeout + 100 } : {})}
-                >
-                    <Grid item xs={4}><ItemCard setCounter={setCounter} counter={counter} /></Grid>
-                </Grow>
-                <Grow
-                    in={true}
-                    style={{ transformOrigin: '0 0 0' }}
-                    {...(true ? { timeout: timeout + 100 } : {})}
-                >
-                    <Grid item xs={4}><ItemCard setCounter={setCounter} counter={counter} /></Grid>
-                </Grow>
-                <Grow
-                    in={true}
-                    style={{ transformOrigin: '0 0 0' }}
-                    {...(true ? { timeout: timeout + 100 } : {})}
-                >
-                    <Grid item xs={4}><ItemCard setCounter={setCounter} counter={counter} /></Grid>
-                </Grow>
-                <Grow
-                    in={true}
-                    style={{ transformOrigin: '0 0 0' }}
-                    {...(true ? { timeout: timeout + 100 } : {})}
-                >
-                    <Grid item xs={4}><ItemCard setCounter={setCounter} counter={counter} /></Grid>
-                </Grow>
+                > */}
+                    {data.map((item,key) => (
+                        <Grid key={key} item xs={4}>
+                            {console.log(item)}
+                            <ItemCard setCounter={setCounter} counter={counter} item={item}/>
+                        </Grid>
+                    ))}
+
+                {/* </Grow> */}
+
 
 
             </Grid>

@@ -11,13 +11,22 @@ import Dashboard from './pages/Dashboard';
 
 
 function App() {
-  
-  
+  const products = [
+    {
+        name:"seafood",
+        id:1,
+        price:"100$",
+        contents:["Shrimp", "Squid", "Pineapple"],
+        count:0,
+    }
+  ]
+  const [data,setData] = useState(products)
+  console.log(data)
   
   return (
     <div className="App">
       <Routes>
-        <Route path='/' element={<Homepage/>} />
+        <Route path='/' element={<Homepage data={data}/>} />
         <Route path='/checkout/' element={<Checkout/>} />
         <Route path='/admin/Dashboard' element={<Dashboard/>} />
 
