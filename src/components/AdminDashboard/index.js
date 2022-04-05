@@ -5,7 +5,6 @@ import Dashboard from './Dashboard'
 const AdminDashboard = () => {
   return (
     <div>
-        <AdminHeader/>
         <Dashboard/>
     </div>
   )

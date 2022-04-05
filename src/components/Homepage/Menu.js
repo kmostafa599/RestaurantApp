@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { styled } from '@mui/system';
 import TabsUnstyled from '@mui/base/TabsUnstyled';
 import TabsListUnstyled from '@mui/base/TabsListUnstyled';
@@ -77,7 +77,9 @@ const TabsList = styled(TabsListUnstyled)`
         alignItems:"center",
     },
 })
-const Menu = ({counter,setCounter}) => {
+const Menu = () => {
+  const [counter,setCounter] = useState()
+
     const classes = useStyles()
     return (
         //sx={{ display: { xl: 'none', xs: 'block' } }}
