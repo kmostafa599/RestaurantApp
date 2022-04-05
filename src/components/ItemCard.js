@@ -21,6 +21,7 @@ const ItemCard = ({counter,setCounter}) => {
                     sx={{ width: 151 }}
                     image={seafood}
                     alt="Live from space album cover"
+                    style={{width:"5rem",height:"5rem"}}
                 />
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <CardContent sx={{ flex: '1 0 auto' }}>

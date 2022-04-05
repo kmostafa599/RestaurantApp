@@ -80,6 +80,7 @@ const TabsList = styled(TabsListUnstyled)`
 const Menu = ({counter,setCounter}) => {
     const classes = useStyles()
     return (
+        //sx={{ display: { xl: 'none', xs: 'block' } }}
         <div className={classes.menu}>
             <TabsUnstyled defaultValue={0}>
                 <TabsList>

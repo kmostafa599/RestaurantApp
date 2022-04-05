@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core'
 import { Button, Grid, Typography } from '@mui/material'
 import pizza from '../icons/pizza.png'
 
-
+//sx={{ display: { xl: 'none', xs: 'block' } }}
 const useStyles = makeStyles({
     banner: {
         display: "flex",
@@ -26,17 +26,19 @@ const useStyles = makeStyles({
         height: "20rem",
         position: "relative"
     },
-    buttons: {
-        
+    text: {
+        color: "white",
+        textAlign: "left",
+        left: "2rem",
     },
     bannerPhoto: {
         position: "absolute",
-        
+
         width: "20rem",
-        marginRight:'20px'
+        marginRight: '20px'
 
     },
-    button: {
+    buttons: {
         position: "absolute",
         left: "0%",
         top: "50%",
@@ -47,7 +49,7 @@ const useStyles = makeStyles({
         height: "2rem",
         color: " white",
         background: "red", /* default color */
-        border:"0.5px dotted white",
+        border: "0.5px dotted white",
         /* "to left" / "to right" - affects initial color */
         background: " linear-gradient(to right, #CD2F17 55%, #303030 50%) right",
         backgroundSize: "200%",
@@ -56,7 +58,7 @@ const useStyles = makeStyles({
             backgroundPosition: "left",
 
         },
-        
+
     },
 })
 
@@ -67,23 +69,24 @@ const Banner = () => {
             <div className={classes.background}>
                 <Grid container spacing={2}>
                     <Grid item xs={6}>
-                        <Typography variant='h4' style={{color:"white",textAlign:"left",left:"2rem"}}>Enjoy your delicious food</Typography> <div >
-                    <div >
-                        <button className={classes.button} >Buy one get 2</button>
-                    </div>
-                    <div >
-                        <button  className={classes.button} style={{width:"",top:"35%"}}>order Online Now</button>
-                    </div>
-                </div></Grid>
-            <Grid item xs={6}>
-            <div className={classes.bannerPhoto} >
-                    <img style={{ width: "100%", height: "100%" }} src={pizza} alt="" />
-                </div>
-            </Grid>
+                        <Typography variant='h4' className={classes.text}>ENJOY OUR DELICIOUS <span style={{ color: "#ff9200" }}>FOOD</span></Typography> <div >
+                            <div >
+                                <button className={classes.buttons} >Buy one get 2</button>
+                            </div>
+                            <div >
+                                <button className={classes.buttons} style={{ width: "", top: "35%" }}>order Online Now</button>
+                            </div>
+                        </div>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <div className={classes.bannerPhoto} >
+                            <img style={{ width: "100%", height: "100%" }} src={pizza} alt="" />
+                        </div>
+                    </Grid>
                 </Grid>
-                
-               
-                
+
+
+
 
             </div>
 

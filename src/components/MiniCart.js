@@ -11,7 +11,7 @@ const useStyles = makeStyles({
             width: "20rem",
             height: "25rem",
             top: "15%",
-            margin:"2rem"
+            // margin:"2rem"
         },
         '& .MuiPaper-root MuiPaper-elevation MuiPaper-elevation16 MuiDrawer-paper MuiDrawer-paperAnchorRight css-1160xiw-MuiPaper-root-MuiDrawer-paper': {
             '& ::-webkit-scrollbar': {

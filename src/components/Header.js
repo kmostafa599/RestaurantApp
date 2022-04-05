@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import AppBar from '@mui/material/AppBar';
-import { Badge, Button, Divider, SwipeableDrawer, Toolbar, Typography } from '@mui/material';
+import { Badge, Button, Toolbar, Typography } from '@mui/material';
 import { makeStyles } from '@material-ui/core'
-import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
 import DeliveryIcon from '../icons/fast-delivery.png'
-import ItemCard from './ItemCard';
+import MiniCart from './MiniCart';
+import Logo from '../icons/Logo.png'
 
 const useStyles = makeStyles({
     header: {
@@ -31,48 +31,28 @@ const useStyles = makeStyles({
         
 
     },
-    deliveryIconContainer: {
+    IconContainer: {
         width: "2rem",
         height: "2rem",
+        display:"flex",
 
     },
-    deliveryIcon: {
+    Icon: {
         width: "100%",
+        margin:"0.1rem",
+        
     },
-    drawer:{
-        '& .MuiDrawer-paper':{
-          width:"20rem",
-          height:"25rem",
-          top:"15%",
-        },
-        '& .MuiPaper-root MuiPaper-elevation MuiPaper-elevation16 MuiDrawer-paper MuiDrawer-paperAnchorRight css-1160xiw-MuiPaper-root-MuiDrawer-paper':{
-            '& ::-webkit-scrollbar': {
-                width: "20px",
-              },
-              
-              /* Track */
-              '&::-webkit-scrollbar-track': {
-                boxShadow: "inset 0 0 5px grey", 
-                borderRadius: "10px",
-              },
-               
-              /* Handle */
-              '&::-webkit-scrollbar-thumb' :{
-                background: "red", 
-                borderRadius: "10px",
-              },
-              
-              /* Handle on hover */
-              '&::-webkit-scrollbar-thumb:hover' :{
-                background: "#b30000", 
-              },
+    badge:{
+        '&.css-106c1u2-MuiBadge-badge':{
+            backgroundColor:"#ff9200"
         }
-      },
+    }
+    
 })
 
 const Header = (props) => {
     const classes = useStyles()
-    const [counter, setCounter] = useState(1)
+    const [counter, setCounter] = useState(4)
     const [invisible, setInvisible] = useState(false);
     const [state, setState] = React.useState({
     
@@ -90,7 +70,7 @@ const Header = (props) => {
         setState({ ...state, ['right']: open });
       };
 useEffect(() => {
-    if(counter){
+    if(counter==true){
         setInvisible(true)
         
     }
@@ -101,10 +81,10 @@ useEffect(() => {
 }, [counter]);
     return (
         <div>
-            <AppBar className={classes.appBar}>
+            <AppBar className={classes.appBar} style={{position:"absolute"}}>
                 <Toolbar >
                     <Typography variant="h6" component="div">
-                        Logo
+                    <div className={classes.IconContainer}><div>OBSD</div> <img className={classes.Icon}src={Logo} alt=''/></div> 
                     </Typography>
                     <div className={classes.navMenu}>
                         <Typography className={classes.menuItems} variant="h5" component="div">
@@ -114,9 +94,9 @@ useEffect(() => {
                             Most popular
                         </Typography>
                         <Typography className={classes.menuItems} variant="h6" component="div">
-                            <div className={classes.deliveryIconContainer} onClick={toggleDrawer('right', true)} >
-                                <Badge badgeContent={counter} color="primary" invisible={invisible}>
-                                    <img className={classes.deliveryIcon} src={DeliveryIcon} alt='' />
+                            <div className={classes.IconContainer} onClick={toggleDrawer('right', true)} >
+                                <Badge badgeContent={counter} color="primary" style={{color:"#ff9200"}} invisible={invisible}>
+                                    <img className={classes.Icon} src={DeliveryIcon} alt='' />
                                 </Badge>
                             </div>
 
@@ -125,20 +105,7 @@ useEffect(() => {
                 </Toolbar>
             </AppBar>
             <Button>right</Button>
-          <SwipeableDrawer
-          className={classes.drawer}
-            anchor='right'
-            open={state['right']}
-            onClose={toggleDrawer('right', false)}
-            onOpen={toggleDrawer('right', true)}
-          >
-                <ItemCard style={{width:"0.2rem"}}/>
-                <ItemCard style={{width:"0.2rem"}}/><ItemCard style={{width:"0.2rem"}}/><ItemCard style={{width:"0.2rem"}}/><ItemCard style={{width:"0.2rem"}}/>
-              
-        <Divider style={{margin:"0.5rem"}}/>
-        <Typography variant="subtitle" color="initial" style={{marginLeft:"1rem",marginBottom:"1rem"}}>Subtotal:LE700</Typography>
-        <Button variant='contained' style={{backgroundColor:"#ff9200",color:"white",margin:"1rem"}}>checkout</Button>
-          </SwipeableDrawer>
+          <MiniCart state={state} toggleDrawer={toggleDrawer}/>
         </div>
     )
 }
