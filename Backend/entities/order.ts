@@ -7,31 +7,25 @@ export class Order extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number
 
+    @Column()
+    mobile: string
 
+    @Column()
+    address: string
+
+    @Column()
+    city: string
 
     @OneToMany(
         () => Product,
-        product => product.order,{
+        product => product.orders,{
             nullable:false
         }
     )
+    @JoinTable({
+        
+    })
     products: Product[]
-
-    
-    
-    // @JoinTable({
-    //     name: "post_tag",
-    //     joinColumn: {
-    //         name: "post",
-    //         referencedColumnName: 'id'
-    //     },
-    //     inverseJoinColumn: {
-
-    //         name: "tag",
-    //         referencedColumnName: 'id'
-    //     }
-    // })
-    // tags: Tag[]
 }
 
 

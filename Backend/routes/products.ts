@@ -67,6 +67,7 @@ routes.get('/:productId',async (req, res) =>{ //localhost:3000/userId
 // })
 routes.delete('/delete/:id',async (req, res) =>{
     const {id} = req.params
+    console.log()
     // const postBody = await Post.findOneBy({id:parseInt(id)})
     const product = Product.delete(id)
     

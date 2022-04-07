@@ -1,6 +1,6 @@
 import express from 'express'
 import { In } from 'typeorm'
-import { Category } from '../entities/category'
+import { Order } from '../entities/order'
 import { Product } from '../entities/product'
 import { User } from '../entities/User'
 
@@ -8,23 +8,23 @@ const routes = express()
 
 
 routes.get('/', async (req,res)=>{
-    const categories = await Category.find() 
-    if(!categories){
-        return res.json({msg:"No categories Found!"})
+    const oreders = await Order.find() 
+    if(!oreders){
+        return res.json({msg:"No oreders Found!"})
     }
-    return res.json(categories)
+    return res.json(oreders)
 })
-routes.get('/:categoryId',async (req, res) =>{ //localhost:3000/userId 
-    // const categorys = await Post.find()
+routes.get('/:orderId',async (req, res) =>{ //localhost:3000/userId 
+    // const oreders = await Post.find()
 
-    const { categoryId } = req.params
-    const category = await Category.findOneBy({id: parseInt(categoryId)})
+    const { orderId } = req.params
+    const order = await Order.findOneBy({id: parseInt(orderId)})
     
     
-    if(!category){
-        return res.json({res:"Category not found"})
+    if(!order){
+        return res.json({res:"Order not found"})
     }
-    return res.json(category)
+    return res.json(order)
     
 })
 // routes.post('/create/:userId',async (req, res) =>{ //localhost:3000/userId 
@@ -70,9 +70,9 @@ routes.delete('/delete/:id',async (req, res) =>{
     const {id} = req.params
     console.log()
     // const postBody = await Post.findOneBy({id:parseInt(id)})
-    const category = Category.delete(id)
+    const order = Order.delete(id)
     
-    return res.json(category)
+    return res.json(order)
 })
 // // AppDataSource.initialize()
 

@@ -2,6 +2,7 @@ import { Divider, Grid, Typography, TextField } from '@mui/material'
 import React from 'react'
 import ItemCard from '../Homepage/ItemCard'
 import { makeStyles, Button } from '@material-ui/core'
+import { useSelector } from 'react-redux'
 
 const useStyles = makeStyles({
     container: {
@@ -22,18 +23,19 @@ const useStyles = makeStyles({
     }
 })
 const Test = () => {
+    const data = useSelector(state => state)
     const classes = useStyles()
 
     return (
         <div>
-            <Grid container spacing={2}>
-                <Grid item xs >
+            <Grid container >
+                <Grid item xs={6} >
                     <div className={classes.form}>
                         <TextField
 
                             id="standard-password-input"
                             label="Name"
-                            type="password"
+                            type="text"
                             autoComplete="current-password"
                             variant="standard"
                         />
@@ -41,21 +43,21 @@ const Test = () => {
                         <TextField
                             id="standard-password-input"
                             label="Mobile"
-                            type="password"
+                            type="text"
                             autoComplete="current-password"
                             variant="standard"
                         />
                         <TextField
                             id="standard-password-input"
                             label="Address"
-                            type="password"
+                            type="text"
                             autoComplete="current-password"
                             variant="standard"
                         />
                         <TextField
                             id="standard-password-input"
                             label="City"
-                            type="password"
+                            type="text"
                             autoComplete="current-password"
                             variant="standard"
                         />
@@ -67,21 +69,25 @@ const Test = () => {
                         Order Now
                     </Button>
                     <Button className={classes.button} variant="outlined" style={{
-                        
+
                     }}>
                         cancel
                     </Button>
                 </Grid>
-                <Divider orientation="vertical" flexItem style={{ margin: "2rem", marginTop: "10rem", marginBottom: "10rem", marginLeft: "15rem" }} />
 
                 <Grid item xs >
-                    <div style={{ height: "70%", marginLeft: "auto", marginTop: "10rem", marginBottom: "10rem", marginRight: "2rem" }}>
-                        <ItemCard style={{ width: "0.2rem" }} />
-                        <ItemCard style={{ width: "0.2rem" }} />
-                        <ItemCard style={{ width: "0.2rem" }} />
-                        <ItemCard style={{ width: "0.2rem" }} />
-                        <ItemCard style={{ width: "0.2rem" }} />
-                        <Divider style={{ margin: "0.5rem" }} />
+
+                    <div style={{ height: "70%", margin:"8rem",marginTop: "10rem",  marginRight: "2rem" }}>
+                    <Divider orientation="vertical" flexItem style={{ margin: "2rem",}} />
+
+                        {data.Data.map(item => item.count > 0 ? (
+                            <div>
+                                <ItemCard  item={item} />
+                            </div>
+
+                            
+                         ) : <div></div>)}
+
 
                         <Typography variant="subtitle" color="initial" style={{ marginLeft: "1rem", marginBottom: "1rem" }}>Subtotal:LE700</Typography>
 
