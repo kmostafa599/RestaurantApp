@@ -27,37 +27,32 @@ routes.get('/:orderId',async (req, res) =>{ //localhost:3000/userId
     return res.json(order)
     
 })
-// routes.post('/create/:userId',async (req, res) =>{ //localhost:3000/userId 
-//     // return res.json(req.body)
-//     const {userId} = req.params
-//     const userBody = await User.findOneBy({id:parseInt(userId)})
-//     const {
-//         title,
-//         votes,
-//         tags,
-//         comments
-//     } = req.body
-//     const tagsTable = await Tag.find({
+routes.post('/create/order',async (req, res) =>{ //localhost:3000/userId 
+    // return res.json(req.body)
+    // const {userId} = req.params
+    // const userBody = await User.findOneBy({id:parseInt(userId)})
+    const {
+        mobile,
+        adress,
+        city
+    } = req.body
+    const productsTable = await Product.find({
         
-//             where:{id: In(tags)}
+            where:{id: In(tags)}
         
-//     }) 
-//     const commentTable = await Comment.find({
-        
-//         where:{id: In(comments)}
+    }) 
     
-// }) 
     
-//     const post = Post.create({
-//         title:title,
-//         user: userBody,
-//         tags:tagsTable,
-//         comments:commentTable
+    const product = Product.create({
+        mobile:mobile,
+        adress: adress,
+        city:city,
+        products:productsTable,
     
-//     })
-//     await post.save()
-//     return res.json(post)
-// })
+    })
+    await product.save()
+    return res.json(product)
+})
 
 // routes.put('/update/:postId/:userId',async (req, res) =>{
 //     const {postId} = req.params
