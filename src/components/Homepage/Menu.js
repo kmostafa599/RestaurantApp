@@ -91,6 +91,7 @@ const Menu = ({data}) => {
                     <Tab>Two</Tab>
                     <Tab>Three</Tab>
                 </TabsList>
+                
                 <TabPanel value={0}><Products data={data}counter={counter} setCounter={setCounter}/></TabPanel>
                 <TabPanel value={1}><Products/></TabPanel>
                 <TabPanel value={2}><Products/></TabPanel>
