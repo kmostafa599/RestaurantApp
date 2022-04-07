@@ -4,7 +4,7 @@ import { Badge, Button, Toolbar, Typography } from '@mui/material';
 import { makeStyles } from '@material-ui/core'
 import Logo from '../../icons/Logo.png'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme =>({
     header: {
         marginLeft: "10rem",
         marginRight: "10rem"
@@ -18,6 +18,7 @@ const useStyles = makeStyles({
         padding: "1rem"
     },
     appBar: {
+width:"100%",
         '& .MuiToolbar-root': {
             backgroundColor: "#303030",
         },
@@ -26,9 +27,8 @@ const useStyles = makeStyles({
             backgroundColor: "#303030",
 
         },  
-        
-
     },
+    toolbar: theme.mixins.toolbar,
     IconContainer: {
         width: "2rem",
         height: "2rem",
@@ -46,7 +46,7 @@ const useStyles = makeStyles({
         }
     }
     
-})
+}));
 const AdminHeader = () => {
     const classes = useStyles()
   return (

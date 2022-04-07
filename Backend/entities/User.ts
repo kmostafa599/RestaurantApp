@@ -14,9 +14,9 @@ export class User extends BaseEntity {
     // @ManyToOne(()=>User,(user)=>user.post)
     @OneToMany(
         ()=> Product,
-        post => post.user
+        product => product.user
     )
-    posts:Product[]
+    products:Product[]
 
     
 }

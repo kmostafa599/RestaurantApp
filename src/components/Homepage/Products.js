@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import ItemCard from './ItemCard'
 import { Accordion, AccordionDetails, AccordionSummary, Typography, } from '@material-ui/core'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useSelector } from 'react-redux'
 
 let timeout = 2000
 const useStyles = makeStyles(theme => ({
@@ -22,10 +23,10 @@ const useStyles = makeStyles(theme => ({
     },
 
 }))
-const Products = ({ counter, setCounter, data }) => {
+const Products = ({ counter, setCounter}) => {
     const [open, setOpen] = useState(false);
     const classes = useStyles(open)
-    console.log(data)
+    const data = useSelector(state=>state)
     return (
         <div className={classes.accordion} sx={{ display: { xs: "block", xl: "none" } }}>
             {/* <Accordion TransitionProps={{ timeout: 750 }} elevation={0} className="m-2" sx={{ border: "none", borderRadius: 10, margin: "5px", }}>
@@ -68,14 +69,14 @@ const Products = ({ counter, setCounter, data }) => {
             </Accordion> */}
 
             <Grid container spacing={2} sx={{ display: { xl: 'none', xs: 'block' } }}>
-                <Grow in={true}><Grid item xs={4}><ItemCard setCounter={setCounter} counter={counter} /></Grid></Grow>
+                {/* <Grow in={true}><Grid item xs={4}><ItemCard setCounter={setCounter} counter={counter} /></Grid></Grow> */}
                 {/* Conditionally applies the timeout prop to change the entry speed. */}
                 {/* <Grow
                     in={true}
                     style={{ transformOrigin: '0 0 0' }}
                     {...(true ? { timeout: 1000 } : {})}
                 > */}
-                    {data.map((item,key) => (
+                    {data?.Data?.map((item,key) => (
                         <Grid key={key} item xs={4}>
                             {console.log(item)}
                             <ItemCard setCounter={setCounter} counter={counter} item={item}/>

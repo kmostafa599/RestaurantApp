@@ -65,13 +65,13 @@ routes.get('/:productId',async (req, res) =>{ //localhost:3000/userId
 //     await post.save()
 //     return res.json(post)
 // })
-// routes.delete('/delete/:id',async (req, res) =>{
-//     const {id} = req.params
-//     // const postBody = await Post.findOneBy({id:parseInt(id)})
-//     const post = Post.delete(id)
+routes.delete('/delete/:id',async (req, res) =>{
+    const {id} = req.params
+    // const postBody = await Post.findOneBy({id:parseInt(id)})
+    const product = Product.delete(id)
     
-//     return res.json(post)
-// })
+    return res.json(product)
+})
 // // AppDataSource.initialize()
 
 export default routes   

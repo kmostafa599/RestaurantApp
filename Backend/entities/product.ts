@@ -1,4 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToMany, OneToMany, JoinTable, ManyToOne, JoinColumn } from "typeorm"
+import { Category } from "./category"
+import { Order } from "./order"
 import { User } from "./User"
 
 @Entity()
@@ -17,11 +19,16 @@ export class Product extends BaseEntity {
     @Column()
     count: number
 
+    @Column({
+        nullable:true
+    })
+    image: string
+
 
     @ManyToOne(
         () => User,
-        user => user.posts,{
-            nullable:false
+        user => user.products,{
+            nullable:true
         }
     )
     @JoinColumn({
@@ -29,8 +36,31 @@ export class Product extends BaseEntity {
 
     })
     user: User
+    @ManyToOne(
+        ()=> Category,
+        category => category.products,{
+            nullable:true
+        }
+        
+    )
+    @JoinColumn({
+        name: "category_id",
 
-    
+    })
+    category:Category
+
+    @ManyToOne(
+        ()=> Order,
+        order => order.products,{
+            nullable:true
+        }
+        
+    )
+    @JoinColumn({
+        name: "order_id",
+
+    })
+    order:Order
     
     // @JoinTable({
     //     name: "post_tag",

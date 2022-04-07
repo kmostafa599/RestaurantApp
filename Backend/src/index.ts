@@ -8,6 +8,8 @@ import productRoutes from '../routes/products'
 // import { AppDataSource } from "./data-source"
 import { Product } from "../entities/product"
 import { User } from '../entities/User'
+import { Category } from '../entities/category'
+import { Order } from '../entities/order'
 // import { AppDataSource } from './data.source'
 
 config()
@@ -76,7 +78,7 @@ app.listen(process.env.PORT,async () => {
             port:+process.env.DB_PORT!,
             username:process.env.DB_USERNAME,
             password:process.env.DB_PASSWORD,
-            entities:[Product,User],
+            entities:[Product,User,Category,Order],
             synchronize:true,
             logging:false
         })  

@@ -1,10 +1,10 @@
 import React from 'react'
 import HomePage from '../components/Homepage'
 
-const Homepage = ({data}) => {
+const Homepage = () => {
   return (
     <div>
-        <HomePage data={data} />
+        <HomePage />
     </div>
   )
 }
