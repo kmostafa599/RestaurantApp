@@ -49,32 +49,27 @@ export class Product extends BaseEntity {
     })
     category:Category
 
-    @ManyToOne(
+    @ManyToMany(
         ()=> Order,
         order => order.products,{
             nullable:true
         }
         
     )
-    @JoinColumn({
-        name: "order_id",
-
-    })
-    order:Order
     
-    // @JoinTable({
-    //     name: "post_tag",
-    //     joinColumn: {
-    //         name: "post",
-    //         referencedColumnName: 'id'
-    //     },
-    //     inverseJoinColumn: {
+    @JoinTable({
+        name: "product_order",
+        joinColumn: {
+            name: "product",
+            referencedColumnName: 'id'
+        },
+        inverseJoinColumn: {
 
-    //         name: "tag",
-    //         referencedColumnName: 'id'
-    //     }
-    // })
-    // tags: Tag[]
+            name: "or   der",
+            referencedColumnName: 'id'
+        }
+    })
+    orders: Order[]
 }
 
 

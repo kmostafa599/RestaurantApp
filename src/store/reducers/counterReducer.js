@@ -30,12 +30,16 @@ const  counterReducer=(state = [], action)=>{
             return action.payload
 
         case UPDATE_COUNT:
-            const products = state.products.map(product =>{
+            console.log(state)
+            const products = state.map(product =>{
                 if(product.id === action.payload.id){
+                    console.log({...product,count:product.count+1})
                     return {...product, count:product.count+ action.payload.count}
                 }
-            })
-            return
+                return product
+            });
+
+            return [...state,]
             // const products = state.map(product=>{
             //     if(product.id === action.payload.id){
             //        return {...product,count:product.count+action.payload.count}
