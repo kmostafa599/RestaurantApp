@@ -1,7 +1,11 @@
 import {combineReducers} from 'redux'
+import categoriesReducer from './categoriesReducer'
 import counterReducer from './counterReducer'
+import ordersReducer from './ordersReducer'
 
 
 export const reducers = combineReducers({
-    Data: counterReducer,
+    products: counterReducer,
+    categories: categoriesReducer,
+    orders: ordersReducer,
 })

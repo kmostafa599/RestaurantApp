@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import AdminHeader from './AdminHeader'
 import Dashboard from './Dashboard'
 import AppBar from '@mui/material/AppBar';
 import { Badge, Button, Toolbar, Typography } from '@mui/material';
 import { makeStyles } from '@material-ui/core'
 import Logo from '../../icons/Logo.png'
+import { useDispatch, useSelector } from 'react-redux';
+import { getOrders } from '../../store/actions';
 
 const useStyles = makeStyles(theme =>({
     header: {
@@ -52,12 +54,16 @@ const useStyles = makeStyles(theme =>({
     
 }));
 const AdminDashboard = () => {
+  const dispatch = useDispatch()
+  const orders = useSelector(state=>state.orders)
   const classes = useStyles()
-
+  useEffect(()=>{
+    dispatch(getOrders())
+  },[])
   return (
     <div>
       <AdminHeader/>
-        <Dashboard className={classes.toolbar}/>
+        <Dashboard className={classes.toolbar} orders={orders}/>
     </div>
   )
 }

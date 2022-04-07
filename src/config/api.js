@@ -4,6 +4,9 @@ const API = axios.create({baseURL:'http://localhost:7070/'})
 
 
 export const getData = () => API.get('/products')
+export const getCategories = () => API.get('/categories')
+export const getOrders = () => API.get('/orders')
+
 // export const addPost = (newPost) => API.post('/posts',newPost)
 export const editCount = (id, editedCount) => API.put(`/products/${id}/count`,id)
 export const deleteProduct = (id) => API.delete(`/products/${id}`,id)

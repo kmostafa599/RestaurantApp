@@ -52,7 +52,7 @@ const ItemCard = ({ counter, setCounter, item }) => {
 
                     </CardContent>
                     <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-                        <IconButton aria-label="previous" onClick={handleDecrement}>
+                        <IconButton aria-label="previous" onClick={handleDecrement} disabled={item.count<=1}>
                             -
                         </IconButton>
                         <IconButton aria-label="next">
@@ -61,9 +61,10 @@ const ItemCard = ({ counter, setCounter, item }) => {
                         <IconButton aria-label="next" onClick={handleIncrement}>
 +
                         </IconButton>
-                        <IconButton aria-label="play/pause" onClick={handleDelete}>
+                        {item.count>=1?(<IconButton aria-label="play/pause" onClick={handleDelete}>
                             <DeleteIcon/>         
-                        </IconButton>
+                        </IconButton>):<div></div>}
+                        
                     </Box>
                 </Box>
 

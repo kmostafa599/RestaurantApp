@@ -5,6 +5,8 @@ import cors from 'cors'
 import morgan from 'morgan'
 import helmet from 'helmet'
 import productRoutes from '../routes/products'
+import categoryRoutes from '../routes/category'
+import orderRoutes from '../routes/order'
 // import { AppDataSource } from "./data-source"
 import { Product } from "../entities/product"
 import { User } from '../entities/User'
@@ -67,8 +69,9 @@ app.post('/api/create_user',async (req, res) =>{ //localhost:3000/userId
 
 app.use('/products', productRoutes)
 
+app.use('/categories', categoryRoutes)
 
-
+app.use('/orders', orderRoutes)
 app.listen(process.env.PORT,async () => {
     console.log(`Application started on port 7070!`);
     try {

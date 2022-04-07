@@ -23,6 +23,10 @@ export class Product extends BaseEntity {
         nullable:true
     })
     image: string
+    @Column({
+        nullable:true
+    })
+    cart: Boolean
 
 
     @ManyToOne(

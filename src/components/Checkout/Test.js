@@ -29,7 +29,9 @@ const Test = () => {
     return (
         <div>
             <Grid container >
-                <Grid item xs={6} >
+                <Grid item xs={12} md={6} xl={6}        
+                 sx={{ display: { xl: 'block', xs: 'block' } }}
+>
                     <div className={classes.form}>
                         <TextField
 
@@ -75,12 +77,14 @@ const Test = () => {
                     </Button>
                 </Grid>
 
-                <Grid item xs >
+                <Grid item xs={0} md={6} xl={6}
+                                 sx={{ display: { xl: 'block', xs: 'none' } }}
+                                 >
 
                     <div style={{ height: "70%", margin:"8rem",marginTop: "10rem",  marginRight: "2rem" }}>
                     <Divider orientation="vertical" flexItem style={{ margin: "2rem",}} />
 
-                        {data.Data.map(item => item.count > 0 ? (
+                        {data.products.map(item => item.count > 0 ? (
                             <div>
                                 <ItemCard  item={item} />
                             </div>

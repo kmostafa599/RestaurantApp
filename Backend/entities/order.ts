@@ -16,6 +16,9 @@ export class Order extends BaseEntity {
     @Column()
     city: string
 
+    @Column()
+    finished: Boolean
+
     @OneToMany(
         () => Product,
         product => product.orders,{
@@ -23,7 +26,7 @@ export class Order extends BaseEntity {
         }
     )
     @JoinTable({
-        
+        name:"products"
     })
     products: Product[]
 }

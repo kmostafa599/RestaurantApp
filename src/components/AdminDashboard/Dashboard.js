@@ -1,4 +1,4 @@
-import { Avatar, Divider, Grid, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, Tab, tabClasses, Typography } from '@mui/material'
+import { Avatar, Badge, Divider, Grid, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, Tab, tabClasses, Typography } from '@mui/material'
 import React from 'react'
 import { makeStyles } from '@material-ui/core'
 import Tabs from '@mui/material/Tabs';
@@ -136,7 +136,7 @@ function a11yProps(index) {
   };
 }
 
-const Dashboard = () => {
+const Dashboard = ({orders}) => {
   const classes = useStyles()
   const [value, setValue] = React.useState(0);
   const [done, setDone] = React.useState(false)
@@ -161,13 +161,15 @@ const Dashboard = () => {
             display:"none"
           }}}
         >
-          <Tab label="Item One" classes={{
+          <Tab label={ "Pending Orders" &&<Badge sx={{bgColor:"blue",borderRadius:"10px"}}badgeContent={1}>Pending orders</Badge>  } classes={{
             root: classes.buttons,
             selected: classes.selectedButton
           }} 
           style={{marginBottom:"1rem",}}
           />
-          <Tab label="Item Two" classes={{
+          <Tab label={ "Completed orders" 
+          // <Badge sx={{bgColor:"blue",borderRadius:"10px"}}badgeContent={0}>Completed orders</Badge> 
+         } classes={{
             root: classes.buttons,
             selected: classes.selectedButton
           }}/>
@@ -179,15 +181,12 @@ const Dashboard = () => {
         
         <TabPanel value={value} index={0} style={{padding:"0"}} className={classes.panel}>
           <Grid container spacing={2} style={{width:"75vw",marginTop:"2rem",height:"100vh",}}>
-            <Grid item xs={4}>
-            Hello
-            </Grid>
-            <Grid item xs={4}>
-            Hello
-            </Grid>
-            <Grid item xs={4}>
-            Hello
-            </Grid>
+            {orders.map(order=>(
+              <Grid item xs={4}>
+                {order.address}
+              </Grid>
+            ))}
+            
           </Grid> 
 
         </TabPanel>

@@ -11,9 +11,9 @@ export const ADD_COMMENT = 'ADD_COMMENT'
 export const UPDATE_PRODUCT='UPDATE_PRODUCT'
 export const UPDATE_COUNT ='UPDATE_COUNT'
 export const DELETE_PRODUCT = 'DELETE_PRODUCT'
+export const GET_CATEGORIES = 'GET_CATEGORIES'
 
-
-
+export const GET_ORDERS = 'GET_ORDERS'
 
 
 

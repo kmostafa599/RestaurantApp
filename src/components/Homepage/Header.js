@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core'
 import DeliveryIcon from '../../icons/fast-delivery.png'
 import MiniCart from './MiniCart';
 import Logo from '../../icons/Logo.png'
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
     header: {
@@ -23,31 +24,31 @@ const useStyles = makeStyles({
         '& .MuiToolbar-root': {
             backgroundColor: "#303030",
         },
-        '&.css-11b3ww9-MuiPaper-root-MuiAppBar-root':{
+        '&.css-11b3ww9-MuiPaper-root-MuiAppBar-root': {
             boxShadow: "none",
             backgroundColor: "#303030",
 
-        },  
-        
+        },
+
 
     },
     IconContainer: {
         width: "2rem",
         height: "2rem",
-        display:"flex",
+        display: "flex",
 
     },
     Icon: {
         width: "100%",
-        margin:"0.1rem",
-        
+        margin: "0.1rem",
+
     },
-    badge:{
-        '&.css-106c1u2-MuiBadge-badge':{
-            backgroundColor:"#ff9200"
+    badge: {
+        '&.css-106c1u2-MuiBadge-badge': {
+            backgroundColor: "#ff9200"
         }
     }
-    
+
 })
 
 const Header = (props) => {
@@ -55,36 +56,40 @@ const Header = (props) => {
     const [counter, setCounter] = useState(4)
     const [invisible, setInvisible] = useState(false);
     const [state, setState] = React.useState({
-    
+
         right: false,
-      });
+    });
     const toggleDrawer = (anchor, open) => (event) => {
         if (
-          event &&
-          event.type === 'keydown' &&
-          (event.key === 'Tab' || event.key === 'Shift')
+            event &&
+            event.type === 'keydown' &&
+            (event.key === 'Tab' || event.key === 'Shift')
         ) {
-          return;
+            return;
         }
-    
+
         setState({ ...state, ['right']: open });
-      };
-useEffect(() => {
-    if(counter==true){
-        setInvisible(true)
-        
-    }
-    else{
-        setInvisible(false)
-    }
-    
-}, [counter]);
+    };
+    useEffect(() => {
+        if (counter == true) {
+            setInvisible(true)
+
+        }
+        else {
+            setInvisible(false)
+        }
+
+    }, [counter]);
     return (
         <div>
-            <AppBar className={classes.appBar} style={{position:"absolute"}}>
+            <AppBar className={classes.appBar} style={{ position: "absolute" }}>
                 <Toolbar >
                     <Typography variant="h6" component="div">
-                    <div className={classes.IconContainer}><div>OBSD</div> <img className={classes.Icon}src={Logo} alt=''/></div> 
+                        <div className={classes.IconContainer}>
+                            <Link to='/'>
+                                <div>OBSD</div>
+                            </Link>
+                            <img className={classes.Icon} src={Logo} alt='' /></div>
                     </Typography>
                     <div className={classes.navMenu}>
                         <Typography className={classes.menuItems} variant="h5" component="div">
@@ -95,7 +100,7 @@ useEffect(() => {
                         </Typography>
                         <Typography className={classes.menuItems} variant="h6" component="div">
                             <div className={classes.IconContainer} onClick={toggleDrawer('right', true)} >
-                                <Badge badgeContent={counter} color="primary" style={{color:"#ff9200"}} invisible={invisible}>
+                                <Badge badgeContent={counter} color="primary" style={{ color: "#ff9200" }} invisible={invisible}>
                                     <img className={classes.Icon} src={DeliveryIcon} alt='' />
                                 </Badge>
                             </div>
@@ -105,7 +110,7 @@ useEffect(() => {
                 </Toolbar>
             </AppBar>
             <Button>right</Button>
-          <MiniCart state={state} toggleDrawer={toggleDrawer}/>
+            <MiniCart state={state} toggleDrawer={toggleDrawer} />
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import * as api from '../../config/api'
-import { ADD_COMMENT, ADD_POST, ADD_VOTE, DELETE_POST, DELETE_PRODUCT, EDIT_POST, GET_INITIAL_DATA, UPDATE_COUNT } from "./actionTypes"
+import { ADD_COMMENT, ADD_POST, ADD_VOTE, DELETE_POST, DELETE_PRODUCT, EDIT_POST, GET_CATEGORIES, GET_INITIAL_DATA, GET_ORDERS, UPDATE_COUNT } from "./actionTypes"
 
 
 
@@ -18,7 +18,26 @@ export const getInitialData = () => async (dispatch) => {
         console.log(error)
     }
 }
-
+export const getCategories = () => async (dispatch) => {
+    try {
+        const response = await api.getCategories()
+        // console.log(response)
+        dispatch({ type: GET_CATEGORIES , payload: response.data })
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+export const getOrders = () => async (dispatch) => {
+    try {
+        const response = await api.getOrders()
+        console.log(response)
+        dispatch({ type: GET_ORDERS , payload: response.data })
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
 // export const addPost = (newPost) => async (dispatch) => {
 //     console.log("Actions",newPost)
 //     try {
@@ -67,7 +86,7 @@ export const getInitialData = () => async (dispatch) => {
 //         await api.editCount(id,count)
 //         const response = await api.getData()
 //         console.log(response)
-//         dispatch({type:"UPDATE_COUNT",payload: response.Data})
+//         dispatch({type:"UPDATE_COUNT",payload: response.products})
         
 //     }
 //     catch(error){
@@ -81,6 +100,14 @@ export const changeCount = (id,count) =>{
         payload:{
             id,
             count
+        }
+    }
+}
+export const deleteProduct = (id) =>{
+    return {
+        type:DELETE_PRODUCT,
+        payload:{
+            id,
         }
     }
 }
@@ -101,18 +128,18 @@ export const changeCount = (id,count) =>{
 
 
 
-export const deleteProduct = (id) => async (dispatch) => {
-    try {
-        await api.deleteProduct(id)
-        const response = await api.getData()
-        console.log(response)
-        dispatch({ type: DELETE_PRODUCT, payload: response.data })
-    }
+// export const deleteProduct = (id) => async (dispatch) => {
+//     try {
+//         await api.deleteProduct(id)
+//         const response = await api.getData()
+//         console.log(response)
+//         dispatch({ type: DELETE_PRODUCT, payload: response.data })
+//     }
 
-    catch (error) {
-        console.log(error)
-    }
-}
+//     catch (error) {
+//         console.log(error)
+//     }
+// }
 // const increment = (id) =>{
 //     return{
 //         type:"INCREMENT",

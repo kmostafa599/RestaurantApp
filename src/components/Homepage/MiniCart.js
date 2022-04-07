@@ -44,7 +44,7 @@ const MiniCart = ({ state,toggleDrawer }) => {
     const classes = useStyles()
 
    const items = useSelector(item =>item)
-const cartItems = items.Data.filter(item=> item.count >= 1
+const cartItems = items.products.filter(item=> item.count >= 1
     )
     return (
         <div >
@@ -54,21 +54,22 @@ const cartItems = items.Data.filter(item=> item.count >= 1
                 open={state['right']}
                 onClose={toggleDrawer('right', false)}
                 onOpen={toggleDrawer('right', true)}
-            >
-                <div style={{margin:"3rem"}}>
-                    {cartItems.map(item=>(
-                        <ItemCard item={item}style={{ width: "0.2rem" }} />
-                    ))}
+
+            >{cartItems?(<div style={{margin:"3rem"}}>
+            {cartItems?.map(item=>(
+                <ItemCard item={item}style={{ width: "0.2rem" }} />
+            ))}
+        
+
+        <Divider style={{ margin: "0.5rem" }} />
+        <Typography variant="subtitle" color="initial" style={{ marginLeft: "1rem", marginBottom: "1rem" }}>Subtotal:LE700</Typography>
+        <Link to='/checkout'>
+        <Button variant='contained' style={{ backgroundColor: "#ff9200", color: "white", margin: "1rem" }}>checkout</Button>
+
+        </Link>
+    
+        </div>):<div>Cart is Empty</div>}
                 
-
-                <Divider style={{ margin: "0.5rem" }} />
-                <Typography variant="subtitle" color="initial" style={{ marginLeft: "1rem", marginBottom: "1rem" }}>Subtotal:LE700</Typography>
-                <Link to='/checkout'>
-                <Button variant='contained' style={{ backgroundColor: "#ff9200", color: "white", margin: "1rem" }}>checkout</Button>
-
-                </Link>
-            
-                </div>
                 </SwipeableDrawer>
         </div>
     )
