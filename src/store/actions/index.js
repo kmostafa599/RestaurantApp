@@ -79,7 +79,8 @@ export const changeCount = (id,count) =>{
     return {
         type:UPDATE_COUNT,
         payload:{
-            id
+            id,
+            count
         }
     }
 }
@@ -112,17 +113,19 @@ export const deleteProduct = (id) => async (dispatch) => {
         console.log(error)
     }
 }
-const increment = (id) =>{
-    return{
-        type:"INCREMENT",
-        id
-    }
+// const increment = (id) =>{
+//     return{
+//         type:"INCREMENT",
+//         payload:{
+            
+//         }
+//     }
     
-}
-const decrement = (id) =>{
-    return{
-        type:"DECREMENT",
-        id
-    }
+// }
+// const decrement = (id) =>{
+//     return{
+//         type:"DECREMENT",
+//         id
+//     }
     
 }

@@ -20,11 +20,11 @@ const ItemCard = ({ counter, setCounter, item }) => {
     const dispatch = useDispatch()
     const handleIncrement =()=>{
         //setCount(count++)
-        dispatch(changeCount(item.id))
+        dispatch(changeCount(item.id,+1))
     }
     const handleDecrement =()=>{
         
-        dispatch(changeCount(item.id))
+        dispatch(changeCount(item.id,-1))
     }
     const handleDelete =() =>{
         dispatch(deleteProduct(item.id))
