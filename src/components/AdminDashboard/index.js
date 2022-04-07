@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react'
 import AdminHeader from './AdminHeader'
-import Dashboard from './Dashboard'
+// import Dashboard from './Dashboard'
 import AppBar from '@mui/material/AppBar';
 import { Badge, Button, Toolbar, Typography } from '@mui/material';
 import { makeStyles } from '@material-ui/core'
 import Logo from '../../icons/Logo.png'
 import { useDispatch, useSelector } from 'react-redux';
 import { getOrders } from '../../store/actions';
+import PermanentDrawerLeft from './Test';
+import Dashboard from './Dashboard';
 
 const useStyles = makeStyles(theme =>({
     header: {
@@ -64,6 +66,7 @@ const AdminDashboard = () => {
     <div>
       <AdminHeader/>
         <Dashboard className={classes.toolbar} orders={orders}/>
+        {/* <PermanentDrawerLeft/> */}
     </div>
   )
 }

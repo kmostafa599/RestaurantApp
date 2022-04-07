@@ -14,6 +14,7 @@ export const DELETE_PRODUCT = 'DELETE_PRODUCT'
 export const GET_CATEGORIES = 'GET_CATEGORIES'
 
 export const GET_ORDERS = 'GET_ORDERS'
+export const ADD_ORDER = 'ADD_ORDER'
 
 
 

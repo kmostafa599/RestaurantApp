@@ -86,9 +86,9 @@ const Header = (props) => {
                 <Toolbar >
                     <Typography variant="h6" component="div">
                         <div className={classes.IconContainer}>
-                            <Link to='/'>
+                            {/* <Link to='/'> */}
                                 <div>OBSD</div>
-                            </Link>
+                            {/* </Link> */}
                             <img className={classes.Icon} src={Logo} alt='' /></div>
                     </Typography>
                     <div className={classes.navMenu}>

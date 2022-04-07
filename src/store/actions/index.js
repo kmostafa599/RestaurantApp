@@ -1,5 +1,5 @@
 import * as api from '../../config/api'
-import { ADD_COMMENT, ADD_POST, ADD_VOTE, DELETE_POST, DELETE_PRODUCT, EDIT_POST, GET_CATEGORIES, GET_INITIAL_DATA, GET_ORDERS, UPDATE_COUNT } from "./actionTypes"
+import { ADD_COMMENT, ADD_ORDER, ADD_POST, ADD_VOTE, DELETE_POST, DELETE_PRODUCT, EDIT_POST, GET_CATEGORIES, GET_INITIAL_DATA, GET_ORDERS, UPDATE_COUNT } from "./actionTypes"
 
 
 
@@ -38,19 +38,19 @@ export const getOrders = () => async (dispatch) => {
         console.log(error)
     }
 }
-// export const addPost = (newPost) => async (dispatch) => {
-//     console.log("Actions",newPost)
-//     try {
-//         await api.addPost(newPost)
-//         const response = await api.getData()
-//         console.log(response)
-//         dispatch({ type: ADD_POST, payload: response.data.data })
-//     }
+export const addOrder = (newOrder) => async (dispatch) => {
+    console.log("Actions",newOrder)
+    try {
+        await api.addOrder(newOrder)
+        const response = await api.getData()
+        console.log(response)
+        dispatch({ type: ADD_ORDER, payload: response.data})
+    }
 
-//     catch (error) {
-//         console.log(error)
-//     }
-// }
+    catch (error) {
+        console.log(error)
+    }
+}
 // // export const updatePost = (id, updatedPost) => async (dispatch) => {
 //     console.log('heloo',updatedPost)
 //     try {

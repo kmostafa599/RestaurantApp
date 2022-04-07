@@ -33,20 +33,23 @@ routes.post('/create/order',async (req, res) =>{ //localhost:3000/userId
     // const userBody = await User.findOneBy({id:parseInt(userId)})
     const {
         mobile,
-        adress,
-        city
+        address,
+        city,
+        products,
+        finished,
     } = req.body
     const productsTable = await Product.find({
         
-            where:{id: In(tags)}
+            where:{id: In(products)}
         
     }) 
     
     
-    const product = Product.create({
+    const product = Order.create({
         mobile:mobile,
-        adress: adress,
+        address: address,
         city:city,
+        finished:finished,
         products:productsTable,
     
     })

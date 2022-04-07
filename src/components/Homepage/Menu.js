@@ -111,7 +111,7 @@ const Menu = ({data}) => {
     return (
         //sx={{ display: { xl: 'none', xs: 'block' } }}
         <div>
-          {categories.map(category=>(
+          {/* {categories.map(category=>(
  <div className={classes.accordion} sx={{  }}>
  <Accordion TransitionProps={{ timeout: 750 }} elevation={0} className="m-2" sx={{ display: { xs: "block", xl: "none" }, border: "none", borderRadius: 10, margin: "5px", }}>
      <AccordionSummary
@@ -135,12 +135,12 @@ const Menu = ({data}) => {
 
  </Accordion>
  </div>
-          ))}
+          ))} */}
          
             <div className={classes.menu}>
             <TabsUnstyled defaultValue={0}>
                 <TabsList>
-                    {data.categories}
+                    {/* {data.categories} */}
                 </TabsList>
                 
                 <TabPanel value={0}><Products data={data}counter={counter} setCounter={setCounter}/></TabPanel>

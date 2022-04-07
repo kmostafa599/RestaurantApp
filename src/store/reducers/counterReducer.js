@@ -1,7 +1,7 @@
 import { UPDATE_PRODUCT, GET_INITIAL_DATA, UPDATE_COUNT, DELETE_PRODUCT, GET_CATEGORIES } from "../actions/actionTypes"
 
 
-const  counterReducer=(state = [], action)=>{
+const  productReducer=(state = [], action)=>{
     switch (action.type){
         case GET_INITIAL_DATA:
             return action.payload  
@@ -38,4 +38,4 @@ const  counterReducer=(state = [], action)=>{
     }
 }
 
-export default counterReducer
+export default productReducer

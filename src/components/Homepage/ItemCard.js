@@ -18,15 +18,15 @@ const ItemCard = ({ counter, setCounter, item }) => {
     console.log(item.name)
     let [count, setCount] = useState(item.count)
     const dispatch = useDispatch()
-    const handleIncrement =()=>{
+    const handleIncrement = () => {
         //setCount(count++)
-        dispatch(changeCount(item.id,+1))
+        dispatch(changeCount(item.id, +1))
     }
-    const handleDecrement =()=>{
-        
-        dispatch(changeCount(item.id,-1))
+    const handleDecrement = () => {
+
+        dispatch(changeCount(item.id, -1))
     }
-    const handleDelete =() =>{
+    const handleDelete = () => {
         dispatch(deleteProduct(item.id))
     }
 
@@ -48,23 +48,23 @@ const ItemCard = ({ counter, setCounter, item }) => {
                         <Typography component="div" variant="h7">
                             {item?.contents}
                         </Typography>
-                        
+
 
                     </CardContent>
                     <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-                        <IconButton aria-label="previous" onClick={handleDecrement} disabled={item.count<=1}>
+                        <IconButton aria-label="previous" onClick={handleDecrement} disabled={item.count <= 1}>
                             -
                         </IconButton>
                         <IconButton aria-label="next">
-{item.count}
+                            {item.count}
                         </IconButton>
                         <IconButton aria-label="next" onClick={handleIncrement}>
-+
+                            +
                         </IconButton>
-                        {item.count>=1?(<IconButton aria-label="play/pause" onClick={handleDelete}>
-                            <DeleteIcon/>         
-                        </IconButton>):<div></div>}
-                        
+                        {item.count >= 1 ? (<IconButton aria-label="play/pause" onClick={handleDelete}>
+                            <DeleteIcon />
+                        </IconButton>) : <div></div>}
+
                     </Box>
                 </Box>
 

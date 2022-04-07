@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 import { Button, Divider, SwipeableDrawer, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import ItemCard from './ItemCard';
 import { Link } from 'react-router-dom';
@@ -44,8 +44,13 @@ const MiniCart = ({ state,toggleDrawer }) => {
     const classes = useStyles()
 
    const items = useSelector(item =>item)
-const cartItems = items.products.filter(item=> item.count >= 1
-    )
+const cartItems = items.products.filter(item=> item.count >= 1)
+    // useEffect(()=>{
+    //     let total = 0;
+    //     cartItems.map(item=>{
+    //         total += item.price
+    //     })
+    // },[cartItems])
     return (
         <div >
             <SwipeableDrawer
@@ -62,7 +67,7 @@ const cartItems = items.products.filter(item=> item.count >= 1
         
 
         <Divider style={{ margin: "0.5rem" }} />
-        <Typography variant="subtitle" color="initial" style={{ marginLeft: "1rem", marginBottom: "1rem" }}>Subtotal:LE700</Typography>
+        <Typography variant="subtitle" color="initial" style={{ marginLeft: "1rem", marginBottom: "1rem" }}>Subtotal:LE{}</Typography>
         <Link to='/checkout'>
         <Button variant='contained' style={{ backgroundColor: "#ff9200", color: "white", margin: "1rem" }}>checkout</Button>
 

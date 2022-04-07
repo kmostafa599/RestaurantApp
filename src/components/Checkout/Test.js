@@ -2,7 +2,9 @@ import { Divider, Grid, Typography, TextField } from '@mui/material'
 import React from 'react'
 import ItemCard from '../Homepage/ItemCard'
 import { makeStyles, Button } from '@material-ui/core'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useFormik } from 'formik';
+import { addOrder } from '../../store/actions'
 
 const useStyles = makeStyles({
     container: {
@@ -25,6 +27,24 @@ const useStyles = makeStyles({
 const Test = () => {
     const data = useSelector(state => state)
     const classes = useStyles()
+    const dispatch = useDispatch()
+    const products = data.products.filter(item => item.count > 0 ? item.id: null)
+       
+    console.log(products)
+        
+    const formik = useFormik({
+        initialValues:{
+            name:'',
+            mobile:'',
+            address:'',
+            city:'',
+            products:[],
+        },
+        onSubmit:values =>{
+            dispatch(addOrder(values))
+        }
+        
+    })
 
     return (
         <div>
@@ -32,6 +52,8 @@ const Test = () => {
                 <Grid item xs={12} md={6} xl={6}        
                  sx={{ display: { xl: 'block', xs: 'block' } }}
 >
+<form>
+
                     <div className={classes.form}>
                         <TextField
 
@@ -75,6 +97,8 @@ const Test = () => {
                     }}>
                         cancel
                     </Button>
+                    </form>
+
                 </Grid>
 
                 <Grid item xs={0} md={6} xl={6}

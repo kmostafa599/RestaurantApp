@@ -7,8 +7,9 @@ export const getData = () => API.get('/products')
 export const getCategories = () => API.get('/categories')
 export const getOrders = () => API.get('/orders')
 
-// export const addPost = (newPost) => API.post('/posts',newPost)
-export const editCount = (id, editedCount) => API.put(`/products/${id}/count`,id)
+export const addOrder = (newOrder) => API.post('/orders',newOrder)
+
+// export const editCount = (id, editedCount) => API.put(`/products/${id}/count`,id)
 export const deleteProduct = (id) => API.delete(`/products/${id}`,id)
 
 // export const addVote = (id, vote) => API.post(`/posts/${id}/vote`,vote)

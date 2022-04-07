@@ -167,9 +167,8 @@ const Dashboard = ({orders}) => {
           }} 
           style={{marginBottom:"1rem",}}
           />
-          <Tab label={ "Completed orders" 
-          // <Badge sx={{bgColor:"blue",borderRadius:"10px"}}badgeContent={0}>Completed orders</Badge> 
-         } classes={{
+          <Tab label={ "Completed orders" &&
+          <Badge sx={{bgColor:"blue",borderRadius:"10px"}}badgeContent={0}>Completed orders</Badge>  } classes={{
             root: classes.buttons,
             selected: classes.selectedButton
           }}/>
