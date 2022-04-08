@@ -4,7 +4,7 @@ import AdminDashboard from '../components/AdminDashboard'
 const Dashboard = () => {
   return (
     <div>
-        <AdminDashboard/>
+        {/* <AdminDashboard/> */}
     </div>
   )
 }

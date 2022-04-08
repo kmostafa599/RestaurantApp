@@ -66,7 +66,7 @@ const AdminDashboard = () => {
     <div>
       <AdminHeader/>
         <Dashboard className={classes.toolbar} orders={orders}/>
-        {/* <PermanentDrawerLeft/> */}
+        <PermanentDrawerLeft/>
     </div>
   )
 }
