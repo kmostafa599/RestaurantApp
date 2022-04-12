@@ -94,7 +94,7 @@ const TabsList = styled(TabsListUnstyled)`
       border: "2px solid black"
   },
 }))
-const Menu = ({data}) => {
+const   Menu = ({data}) => {
   const categories = useSelector(state=>state.categories)
   const dispatch = useDispatch()
   const [counter,setCounter] = useState()
