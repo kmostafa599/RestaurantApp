@@ -19,6 +19,8 @@ const useStyles = makeStyles(theme =>({
     },
     appBar: {
 width:"100%",
+display:"flex",
+marginRight:"auto",
         '& .MuiToolbar-root': {
             backgroundColor: "#303030",
         },
@@ -53,7 +55,11 @@ const AdminHeader = () => {
     <div>
         <AppBar className={classes.appBar} style={{position:"absolute"}}>
                 <Toolbar >
-                    <Typography variant="h6" component="div">
+                <Typography variant="h6" component="div">
+                    <div>Dashboard</div>
+                </Typography>
+
+                    <Typography variant="h6" component="div" style={{marginLeft:"5rem"}}>
                     <div className={classes.IconContainer}><div>OBSD</div> <img className={classes.Icon}src={Logo} alt=''/></div> 
                     </Typography>
                    

@@ -7,7 +7,7 @@ export const getData = () => API.get('/products')
 export const getCategories = () => API.get('/categories')
 export const getOrders = () => API.get('/orders')
 
-export const addOrder = (newOrder) => API.post('/orders',newOrder)
+export const addOrder = (newOrder) => API.post('/orders/create/order',newOrder)
 
 // export const editCount = (id, editedCount) => API.put(`/products/${id}/count`,id)
 export const deleteProduct = (id) => API.delete(`/products/${id}`,id)

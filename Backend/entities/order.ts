@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToMany, OneToMany, JoinTable, ManyToOne, JoinColumn } from "typeorm"
+import { OrderItem } from "./order_item"
 import { Product } from "./product"
 import { User } from "./User"
 
@@ -7,6 +8,11 @@ export class Order extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number
 
+    @Column({
+        nullable:true
+    })
+    name:string
+    
     @Column()
     mobile: string
 
@@ -16,19 +22,33 @@ export class Order extends BaseEntity {
     @Column()
     city: string
 
-    @Column()
+    @Column({
+        nullable:true
+    })
     finished: Boolean
 
+    // @OneToMany(
+    //     () => Product,
+    //     product => product.orders,{
+    //         nullable:false
+    //     }
+    // )
+    // @JoinTable({
+    //     name:"products"
+    // })
+    // products: Product[]
+
     @OneToMany(
-        () => Product,
-        product => product.orders,{
-            nullable:false
-        }
+        ()=> OrderItem,
+        order_item => order_item.order
     )
-    @JoinTable({
-        name:"products"
+    @JoinColumn({
+        name: "order_item",
+
     })
-    products: Product[]
+    order_items:OrderItem[]
+
+   
 }
 
 

@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToMany, OneToMany, JoinTable, ManyToOne, JoinColumn } from "typeorm"
 import { Category } from "./category"
 import { Order } from "./order"
+import { OrderItem } from "./order_item"
 import { User } from "./User"
 
 @Entity()
@@ -53,27 +54,37 @@ export class Product extends BaseEntity {
     })
     category:Category
 
-    @ManyToMany(
-        ()=> Order,
-        order => order.products,{
-            nullable:true
-        }
+    // @ManyToMany(
+    //     ()=> Order,
+    //     order => order.products,{
+    //         nullable:true
+    //     }
         
-    )
+    // )
     
-    @JoinTable({
-        name: "product_order",
-        joinColumn: {
-            name: "product",
-            referencedColumnName: 'id'
-        },
-        inverseJoinColumn: {
+    // @JoinTable({
+    //     name: "product_order",
+    //     joinColumn: {
+    //         name: "product",
+    //         referencedColumnName: 'id'
+    //     },
+    //     inverseJoinColumn: {
 
-            name: "or   der",
-            referencedColumnName: 'id'
-        }
+    //         name: "order",
+    //         referencedColumnName: 'id'
+    //     }
+    // })
+    // orders: Order[]
+
+    @OneToMany(
+        ()=> OrderItem,
+        order_item => order_item.products
+    )
+    @JoinColumn({
+        name: "order_item",
+
     })
-    orders: Order[]
+    order_items:OrderItem
 }
 
 

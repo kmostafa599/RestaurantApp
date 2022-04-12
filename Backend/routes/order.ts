@@ -1,6 +1,7 @@
 import express from 'express'
 import { In } from 'typeorm'
 import { Order } from '../entities/order'
+import { OrderItem } from '../entities/order_item'
 import { Product } from '../entities/product'
 import { User } from '../entities/User'
 
@@ -32,29 +33,35 @@ routes.post('/create/order',async (req, res) =>{ //localhost:3000/userId
     // const {userId} = req.params
     // const userBody = await User.findOneBy({id:parseInt(userId)})
     const {
+        name,
         mobile,
         address,
         city,
-        products,
-        finished,
+        items
     } = req.body
     const productsTable = await Product.find({
         
-            where:{id: In(products)}
+            where:{id: In(items.ids)}
         
     }) 
     
     
-    const product = Order.create({
+    const order = Order.create({
+        name:name,
         mobile:mobile,
-        address: address,
+        address:address,
         city:city,
-        finished:finished,
-        products:productsTable,
-    
+        order_items:productsTable,
     })
-    await product.save()
-    return res.json(product)
+    const orderItems = OrderItem.create({
+        name:name,
+        mobile:mobile,
+        address:address,
+        city:city,
+        order_items:productsTable,
+    })
+    await order.save()
+    return res.json(order)
 })
 
 // routes.put('/update/:postId/:userId',async (req, res) =>{

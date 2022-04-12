@@ -12,6 +12,7 @@ import { Product } from "../entities/product"
 import { User } from '../entities/User'
 import { Category } from '../entities/category'
 import { Order } from '../entities/order'
+import { OrderItem } from '../entities/order_item'
 // import { AppDataSource } from './data.source'
 
 config()
@@ -81,7 +82,7 @@ app.listen(process.env.PORT,async () => {
             port:+process.env.DB_PORT!,
             username:process.env.DB_USERNAME,
             password:process.env.DB_PASSWORD,
-            entities:[Product,User,Category,Order],
+            entities:[Product,User,Category,Order,OrderItem],
             synchronize:true,
             logging:false
         })  

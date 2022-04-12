@@ -109,7 +109,6 @@ const Header = (props) => {
                     </div>
                 </Toolbar>
             </AppBar>
-            <Button>right</Button>
             <MiniCart state={state} toggleDrawer={toggleDrawer} />
         </div>
     )

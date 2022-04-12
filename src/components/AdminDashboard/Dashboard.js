@@ -116,7 +116,6 @@ const useStyles = makeStyles(theme => ({
   },
   panel:{
     '&.css-19kzrtu':{
-      padding:"0px"
     }
   }
 
@@ -149,7 +148,7 @@ const Dashboard = ({orders}) => {
       <Box
         className={classes.panel} sx={{ p:'0px',flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height: 224 }}
       >
-        <div style={{marginTop:"11vh",width:"25vw",height:"100vh",backgroundColor:"#303030"}}>
+        <div style={{width:"25vw",height:"100vh",backgroundColor:"#303030"}}>
         <Tabs
           orientation="vertical"
           variant="scrollable"
