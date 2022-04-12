@@ -11,18 +11,19 @@ import { Accordion, AccordionDetails, AccordionSummary, Typography, } from '@mat
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategories } from '../../store/actions';
+import { Grid } from '@mui/material';
 
 const blue = {
-    50: '#F0F7FF',
-    100: '#C2E0FF',
-    200: '#80BFFF',
-    300: '#66B2FF',
-    400: '#3399FF',
-    500: '#007FFF',
-    600: '#0072E5',
-    700: '#0059B2',
-    800: '#004C99',
-    900: '#003A75',
+  50: '#F0F7FF',
+  100: '#C2E0FF',
+  200: '#80BFFF',
+  300: '#66B2FF',
+  400: '#3399FF',
+  500: '#007FFF',
+  600: '#0072E5',
+  700: '#0059B2',
+  800: '#004C99',
+  900: '#003A75',
 };
 
 const Tab = styled(TabUnstyled)`
@@ -75,43 +76,44 @@ const TabsList = styled(TabsListUnstyled)`
     justify-content: center;
     align-content: space-between;
   `;
-  const useStyles = makeStyles(theme=>({
-    menu:{
-        display:"flex",
-        alignItems:"center",
-    },
-    accordion: {
-      // margin:"5px",
+const useStyles = makeStyles(theme => ({
+  menu: {
+    display: "flex",
+    alignItems: "center",
+  },
+  accordion: {
+    // margin:"5px",
 
-      border: "1px solid",
-      borderColor: props => props ? 'rgb(230 3 75)' : 'white',
-      borderRadius: "10px",
-      marginBottom: theme.spacing(2)
+    border: "1px solid",
+    borderColor: props => props ? 'rgb(230 3 75)' : 'white',
+    borderRadius: "10px",
+    marginBottom: theme.spacing(2)
 
   },
   accordionSummary: {
-      marginBottom: props => props ? "5px" : "0px",
-      border: "2px solid black"
+    marginBottom: props => props ? "5px" : "0px",
+    border: "2px solid black"
   },
 }))
-const   Menu = ({data}) => {
-  const categories = useSelector(state=>state.categories)
+const Menu = ({ data }) => {
+  const categories = useSelector(state => state.categories)
   const dispatch = useDispatch()
-  const [counter,setCounter] = useState()
+  const [counter, setCounter] = useState()
 
-    const [open, setOpen] = useState(false);
-    const classes = useStyles(open)
-    
-    console.log(data)
-    console.log(categories)
+  const [open, setOpen] = useState(false);
+  const [filter, setFilter] = useState(0)
+  const classes = useStyles(open)
 
-    useEffect(()=>{
-      dispatch(getCategories())
-    },[])
-    return (
-        //sx={{ display: { xl: 'none', xs: 'block' } }}
-        <div>
-          {/* {categories.map(category=>(
+  console.log(data)
+  console.log(categories)
+
+  useEffect(() => {
+    dispatch(getCategories())
+  }, [])
+  return (
+    //sx={{ display: { xl: 'none', xs: 'block' } }}
+    <div>
+      {/* {categories.map(category=>(
  <div className={classes.accordion} sx={{  }}>
  <Accordion TransitionProps={{ timeout: 750 }} elevation={0} className="m-2" sx={{ display: { xs: "block", xl: "none" }, border: "none", borderRadius: 10, margin: "5px", }}>
      <AccordionSummary
@@ -136,21 +138,39 @@ const   Menu = ({data}) => {
  </Accordion>
  </div>
           ))} */}
-         
-            <div className={classes.menu}>
-            <TabsUnstyled defaultValue={0}>
-                <TabsList>
-                    {/* {data.categories} */}
-                </TabsList>
-                
-                <TabPanel value={0}><Products data={data}counter={counter} setCounter={setCounter}/></TabPanel>
-                <TabPanel value={1}><Products/></TabPanel>
-                <TabPanel value={2}><Products/></TabPanel>
-            </TabsUnstyled>
+
+      <div className={classes.menu}>
+        <div style={{ display: "flex", JustifyContent: "center" }}>
+
+          <TabsUnstyled defaultValue={0}>
+
+            <TabsList>
+              {categories?.map((category, index) => (
+                <Tab value={index}>
+                  {category.name}
+                </Tab>
+
+              ))}
+            </TabsList>
+            <Grid container>
+              {categories?.map((category, index) => (
+                <TabPanel value={index}>
+                  <Grid item xs={4}><Products category={category.id} />
+                  </Grid>
+                </TabPanel>
+
+              ))}
+            </Grid>
+
+            {/* <TabPanel value={filter}><Products /></TabPanel>
+          <TabPanel value={filter}><Products /></TabPanel> */}
+          </TabsUnstyled>
         </div>
-        </div>
-        
-    )
+
+      </div>
+    </div>
+
+  )
 }
 
 export default Menu
