@@ -94,28 +94,32 @@ const useStyles = makeStyles(theme => ({
     /* "to left" / "to right" - affects initial color */
     background: " linear-gradient(to right, #CD2F17 55%, #303030 50%) right",
     backgroundSize: "200%",
-    
+
     transition: ".5s ease-out",
     '&:hover': {
       backgroundPosition: "left",
 
     },
-    
+
 
   },
   selectedButton: {
-    '&.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected':{
+    '&.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected': {
       color: "white",
-      backgroundPosition:"left"
+      backgroundPosition: "left"
     },
-    '&.MuiTabs-indicator-css-10d9dml-MuiTabs-indicator':{
-        display:"none",
+    '&.MuiTabs-indicator-css-10d9dml-MuiTabs-indicator': {
+      display: "none",
     },
-      
-    
+
+
   },
-  panel:{
-    '&.css-19kzrtu':{
+  panel: {
+    '&.css-19kzrtu': {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      marginLeft: "1rem"
     }
   }
 
@@ -135,7 +139,7 @@ function a11yProps(index) {
   };
 }
 
-const Dashboard = ({orders}) => {
+const Dashboard = ({ orders }) => {
   const classes = useStyles()
   const [value, setValue] = React.useState(0);
   const [done, setDone] = React.useState(false)
@@ -146,50 +150,105 @@ const Dashboard = ({orders}) => {
   return (
     <div style={{ display: 'flex' }} >
       <Box
-        className={classes.panel} sx={{ p:'0px',flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height: 224 }}
+        className={classes.panel} sx={{ p: '0px', flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height: 224 }}
       >
-        <div style={{width:"25vw",height:"100vh",backgroundColor:"#303030"}}>
-        <Tabs
-          orientation="vertical"
-          variant="scrollable"
-          value={value}
-          onChange={handleChange}
-          aria-label="Vertical tabs example"
-          sx={{ borderRight: 1, borderColor: 'divider' }}
-          TabIndicatorProps={{style:{
-            display:"none"
-          }}}
-        >
-          <Tab label={ "Pending Orders" &&<Badge sx={{bgColor:"blue",borderRadius:"10px"}}badgeContent={1}>Pending orders</Badge>  } classes={{
-            root: classes.buttons,
-            selected: classes.selectedButton
-          }} 
-          style={{marginBottom:"1rem",}}
-          />
-          <Tab label={ "Completed orders" &&
-          <Badge sx={{bgColor:"blue",borderRadius:"10px"}}badgeContent={0}>Completed orders</Badge>  } classes={{
-            root: classes.buttons,
-            selected: classes.selectedButton
-          }}/>
-        
-        </Tabs>
+        <div style={{ width: "25vw", minHeight: "100vh", backgroundColor: "#303030" }}>
+          <Tabs
+            orientation="vertical"
+            variant="scrollable"
+            value={value}
+            onChange={handleChange}
+            aria-label="Vertical tabs example"
+            sx={{ borderRight: 1, borderColor: 'divider' }}
+            TabIndicatorProps={{
+              style: {
+                display: "none"
+              }
+            }}
+          >
+
+            <Typography variant="h6" component="div">
+              <div style={{ marginLeft: "2rem", marginBottom: "2rem", color: "white" }}>Dashboard</div>
+            </Typography>
+            <Tab label={"Pending Orders" && <Badge sx={{ bgColor: "blue", borderRadius: "10px" }} badgeContent={1}>Pending orders</Badge>} classes={{
+              root: classes.buttons,
+              selected: classes.selectedButton
+            }}
+              style={{ marginBottom: "1rem", color: "white" }}
+            />
+            <Tab label={"Completed orders" &&
+              <Badge sx={{ bgColor: "blue", borderRadius: "10px" }} badgeContent={0}>Completed orders</Badge>} classes={{
+                root: classes.buttons,
+                selected: classes.selectedButton
+              }}
+              style={{ color: "white" }} />
+
+          </Tabs>
         </div>
         <div >
 
-        
-        <TabPanel value={value} index={0} style={{padding:"0"}} className={classes.panel}>
-          <Grid container spacing={2} style={{width:"75vw",marginTop:"2rem",height:"100vh",}}>
-            {orders.map(order=>(
+        <Grid container spacing={1} style={{ width: "65vw", height: "90vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
+
+          <TabPanel value={value} index={0}  className={classes.panel}>
+              {/* {orders.map(order=>( */}
               <Grid item xs={4}>
-                {order.address}
+                {/* {order.address} */}
+                <div style={{ align: "left", border: "1px solid", width: "100%", height: "max-content" }}>
+                  <div style={{ width: "100%", height: "0.8rem", backgroundColor: "#303030" }}>
+                    <div style={{ marginLeft: "auto" }} >3:30</div>
+                  </div>
+                  <div >
+                    <div onClick={() => setDone(!done)} style={{ textDecoration: done ? 'line-through' : 'none' }}><input type='checkbox' /> hello</div>
+                    
+                  </div>
+                </div>
               </Grid>
-            ))}
-            
-          </Grid> 
+              {/* ))} */}
+              <Grid item xs={4}>
+                {/* {order.address} */}
+                <div style={{ align: "left", border: "1px solid", width: "100%", height: "max-content" }}>
+                  <div style={{ width: "100%", height: "0.8rem", backgroundColor: "#303030" }}>
+                    <div style={{ marginLeft: "auto" }} >3:30</div>
+                  </div>
+                  <div >
+                    <div onClick={() => setDone(!done)} style={{ textDecoration: done ? 'line-through' : 'none' }}><input type='checkbox' /> hello</div>
+                    <div onClick={() => setDone(!done)} style={{ textDecoration: done ? 'line-through' : 'none' }}><input type='checkbox' /> hello</div>
+                    <div onClick={() => setDone(!done)} style={{ textDecoration: done ? 'line-through' : 'none' }}><input type='checkbox' /> hello</div>
 
-        </TabPanel>
-        <TabPanel value={value} index={1} >
-        <Grid container spacing={2} style={{width:"75vw",height:"100vh"}}>
+                  </div>
+                </div>
+              </Grid><Grid item xs={4}>
+                {/* {order.address} */}
+                Hello
+              </Grid>
+              <Grid item xs={4}>
+                {/* {order.address} */}
+                Hello
+              </Grid>
+
+              <Grid item xs={4}>
+                {/* {order.address} */}
+                Hello
+              </Grid>
+              <Grid item xs={4}>
+                {/* {order.address} */}
+                Hello
+              </Grid>
+              <Grid item xs={4}>
+                {/* {order.address} */}
+                Hello
+              </Grid>
+              <Grid item xs={4}>
+                {/* {order.address} */}
+                Hello
+              </Grid>
+
+
+          </TabPanel>
+          </Grid>
+
+          <TabPanel value={value} index={1} >
+            {/* <Grid container spacing={2} style={{width:"75vw",height:"100vh"}}>
             
             
             <Grid item xs={4}>
@@ -220,21 +279,11 @@ const Dashboard = ({orders}) => {
             
             </Grid>
             <Grid item xs={4}>
-            <div style={{align:"left",border:"1px solid",width:"100%",height:"max-content"}}>
-              <div style={{width:"100%",height:"0.8rem",backgroundColor:"#303030"}}>
-                <div style={{marginLeft:"auto"}} >3:30</div>
-              </div>
-              <div >
-                <div onClick={()=>setDone(!done)} style={{textDecoration:done?'line-through':'none'}}><input type='checkbox'/> hello</div>
-                <div onClick={()=>setDone(!done)} style={{textDecoration:done?'line-through':'none'}}><input type='checkbox'/> hello</div>
-                <div onClick={()=>setDone(!done)} style={{textDecoration:done?'line-through':'none'}}><input type='checkbox'/> hello</div>
-
-              </div>
-            </div>
-            </Grid>
-          </Grid> 
-        </TabPanel>
-        <TabPanel value={value} index={2}>
+            
+            </Grid> */}
+            {/* </Grid>  */}
+          </TabPanel>
+          {/* <TabPanel value={value} index={2}>
           Item Three
         </TabPanel>
         <TabPanel value={value} index={3}>
@@ -248,10 +297,10 @@ const Dashboard = ({orders}) => {
         </TabPanel>
         <TabPanel value={value} index={6}>
           Item Seven
-        </TabPanel>
+        </TabPanel> */}
         </div>
       </Box>
-      
+
 
     </div>
   )

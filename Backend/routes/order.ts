@@ -39,28 +39,40 @@ routes.post('/create/order',async (req, res) =>{ //localhost:3000/userId
         city,
         items
     } = req.body
-    const productsTable = await Product.find({
-        
-            where:{id: In(items.ids)}
-        
-    }) 
-    
-    
     const order = Order.create({
         name:name,
         mobile:mobile,
         address:address,
         city:city,
-        order_items:productsTable,
-    })
-    const orderItems = OrderItem.create({
-        name:name,
-        mobile:mobile,
-        address:address,
-        city:city,
-        order_items:productsTable,
+        
     })
     await order.save()
+
+    for(let i =0;i<items.length;i++){
+        const product = await Product.findOneBy({
+        id:items.ids[i]
+           
+        
+    }) 
+        const orderItem = OrderItem.create({
+            order:order,
+            quantity:items.qty[i],
+            products:product
+
+        })
+        await orderItem.save()
+    }
+    
+    
+   
+    
+    // const orderItems = OrderItem.create({
+    //     name:name,
+    //     mobile:mobile,
+    //     address:address,
+    //     city:city,
+    //     order_items:productsTable,
+    // })
     return res.json(order)
 })
 

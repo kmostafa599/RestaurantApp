@@ -1,11 +1,11 @@
 import {combineReducers} from 'redux'
 import categoriesReducer from './categoriesReducer'
-import counterReducer from './counterReducer'
+import productReducer from './counterReducer'
 import ordersReducer from './ordersReducer'
 
 
 export const reducers = combineReducers({
-    products: counterReducer,
+    products: productReducer,
     categories: categoriesReducer,
     orders: ordersReducer,
 })

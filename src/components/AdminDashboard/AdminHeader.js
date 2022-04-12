@@ -39,6 +39,7 @@ marginRight:"auto",
     },
     Icon: {
         width: "100%",
+        height:"100%",
         margin:"0.1rem",
         
     },
@@ -55,11 +56,9 @@ const AdminHeader = () => {
     <div>
         <AppBar className={classes.appBar} style={{position:"absolute"}}>
                 <Toolbar >
-                <Typography variant="h6" component="div">
-                    <div>Dashboard</div>
-                </Typography>
+                
 
-                    <Typography variant="h6" component="div" style={{marginLeft:"5rem"}}>
+                    <Typography variant="h6" component="div" style={{marginLeft:"10rem"}}>
                     <div className={classes.IconContainer}><div>OBSD</div> <img className={classes.Icon}src={Logo} alt=''/></div> 
                     </Typography>
                    

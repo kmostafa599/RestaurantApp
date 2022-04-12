@@ -7,7 +7,7 @@ const routes = express()
 
 
 routes.get('/', async (req,res)=>{
-    const products = await Product.find() 
+    const products = await Product.find({relations:{category:true}}) 
     if(!products){
         return res.json({msg:"No products Found!"})
     }

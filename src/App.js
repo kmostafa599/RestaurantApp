@@ -1,6 +1,6 @@
 import { Stack } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import './App.css';
+// import './App.css';
 
 import { Routes, Route } from 'react-router-dom';
 import Homepage from './pages/Homepage';
@@ -28,7 +28,7 @@ function App() {
     dispatch(getInitialData())
   },[])
   return (
-    <div className="App">
+    <div >
       <Routes>
         <Route path='/' element={<Homepage />} />
         <Route path='/checkout/' element={<Checkout/>} />

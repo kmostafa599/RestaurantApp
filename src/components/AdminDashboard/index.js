@@ -75,7 +75,7 @@ const AdminDashboard = () => {
           {/* <PermanentDrawerLeft/> */}
         </Stack>
         <Stack item>
-          item 3
+          
           {/* <Dashboard className={classes.toolbar} orders={orders} /> */}
           {/* <PermanentDrawerLeft/> */}
         </Stack>

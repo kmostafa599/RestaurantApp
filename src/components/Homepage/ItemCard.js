@@ -14,7 +14,7 @@ import seafood from '../../icons/Seafood.png'
 import { useDispatch } from 'react-redux';
 import { deleteProduct, changeCount } from '../../store/actions';
 
-const ItemCard = ({ counter, setCounter, item }) => {
+const ItemCard = ({  item }) => {
     console.log(item.name)
     let [count, setCount] = useState(item.count)
     const dispatch = useDispatch()

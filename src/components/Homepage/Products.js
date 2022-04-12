@@ -23,9 +23,10 @@ const useStyles = makeStyles(theme => ({
     },
 
 }))
-const Products = ({ counter, setCounter}) => {
+const Products = ({  category}) => {
     
     const data = useSelector(state=>state)
+    const filteredProducts = data.products.filter((item)=>item.category.id === category)
     return (
         <div>
         
@@ -37,10 +38,10 @@ const Products = ({ counter, setCounter}) => {
                     style={{ transformOrigin: '0 0 0' }}
                     {...(true ? { timeout: 1000 } : {})}
                 > */}
-                    {data?.products?.map((item,key) => (
+                    {filteredProducts.map((item,key) => (
                         <Grid key={key} item xs={4}>
                             {console.log(item)}
-                            <ItemCard setCounter={setCounter} counter={counter} item={item}/>
+                            <ItemCard  item={item}/>
                         </Grid>
                     ))}
 

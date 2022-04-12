@@ -31,8 +31,8 @@ const Test = () => {
     const products = data.products.filter(item => item.count > 0 ? item.id : null)
     let ids =[]
     let qty = []
-    const getIds = products.map(data=>ids.push(data.id))
-    const getQty = products.map(data=>qty.push(data.count))
+    products.map(data=>ids.push(data.id))
+    products.map(data=>qty.push(data.count))
     console.log(ids)
     console.log(qty)
 
@@ -48,7 +48,7 @@ const Test = () => {
         },
         onSubmit: values => {
             console.log({ values })
-            values.items = ids
+            // values.items = ids
             dispatch(addOrder(values))
         }
 
